@@ -2,7 +2,7 @@
 AirBnB is a complete RESTful web application, integrating file and database (MySQL) storage in a back-end API with front-end interfacing in a clone of AirBnB. The front-end is designed using HTML5/CSS3 and is 
 served using Python Flask. The application is configured on a distributed system - two web servers and one load balancer - with Nginx and HAProxy.
 
-HolbertonBnB is still in active development, with complete functionality set to deploy in the coming month:
+AirBnB is still in active development, with complete functionality set to deploy in the coming month:
 
 * Complete integration of a RESTful API
 * Full configuration of website with domain name
@@ -15,13 +15,13 @@ This repository contains the initial stage of a student project to build a clone
 
 ### Static :page_facing_up:
 
-The front-end of HolbertonBnB was designed from scratch using HTML5/CSS3 pages
+The front-end of AirBnB was designed from scratch using HTML5/CSS3 pages
 integrated using Flask. While the front-end has not yet been officially deployed,
 screenshots are viewable in the README of the [web_flask](./web_flask) directory.
 
 ### Classes :cl:
 
-HolbertonBnB supports the following classes:
+AirBnB supports the following classes:
 
 * BaseModel
 * User
@@ -51,7 +51,7 @@ object is loaded/re-loaded from any class instances stored in the JSON file
 
 Run by setting the environmental variables `HBNB_TYPE_STORAGE=db`.
 
-In `DBStorage` mode, every time the backend is initialized, HolbertonBnB
+In `DBStorage` mode, every time the backend is initialized, AirBnB
 instantiates an instance of `DBStorage` called `storage`. The `storage` object
 is loaded/re-loaded from the MySQL database specified in the environmental variable
 `HBNB_MYSQL_DB`, using the user `HBNB_MYSQL_USER`, password `HBNB_MYSQL_PWD`, and
@@ -67,7 +67,7 @@ respectively.
 
 ### Using the Console
 
-The HolbertonBnB console can be run both interactively and non-interactively.
+The AirBnB console can be run both interactively and non-interactively.
 To run the console in non-interactive mode, pipe any command(s) into an execution
 of the file `console.py` at the command line.
 
@@ -82,7 +82,7 @@ EOF  all  count  create  destroy  help  quit  show  update
 $
 ```
 
-Alternatively, to use the HolbertonBnB console in interactive mode, run the
+Alternatively, to use the AirBnB console in interactive mode, run the
 file `console.py` by itself:
 
 ```
