@@ -1,8 +1,125 @@
 <center> <h1>HBNB - The Console</h1> </center>
+AirBnB is a complete RESTful web application, integrating file and database (MySQL) storage in a back-end API with front-end interfacing in a clone of AirBnB. The front-end is designed using HTML5/CSS3 and is 
+served using Python Flask. The application is configured on a distributed system - two web servers and one load balancer - with Nginx and HAProxy.
+
+HolbertonBnB is still in active development, with complete functionality set to deploy in the coming month:
+
+* Complete integration of a RESTful API
+* Full configuration of website with domain name
+* Serving of dynamic content using JavaScript
 
 This repository contains the initial stage of a student project to build a clone of the AirBnB website. This stage implements a backend interface, or console, to manage program data. Console commands allow the user to create, update, and destroy objects, as well as manage file storage. Using a system of JSON serialization/deserialization, storage is persistent between sessions.
 
 ---
+---
+
+### Static :page_facing_up:
+
+The front-end of HolbertonBnB was designed from scratch using HTML5/CSS3 pages
+integrated using Flask. While the front-end has not yet been officially deployed,
+screenshots are viewable in the README of the [web_flask](./web_flask) directory.
+
+### Classes :cl:
+
+HolbertonBnB supports the following classes:
+
+* BaseModel
+* User
+* State
+* City
+* Amenity
+* Place
+* Review
+
+## Storage :baggage_claim:
+
+The above classes are handled by one of either two abstracted storage engines,
+depending on the call - [FileStorage](./models/engine/file_storage.py) or
+[DBStorage](./models/engine/db_storage.py).
+
+### FileStorage
+
+The default mode.
+
+In `FileStorage` mode, every time the backend is initialized, HolbertonBnB
+instantiates an instance of `FileStorage` called `storage`. The `storage`
+object is loaded/re-loaded from any class instances stored in the JSON file
+`file.json`. As class instances are created, updated, or deleted, the
+`storage` object is used to register corresponding changes in the `file.json`.
+
+### DBStorage
+
+Run by setting the environmental variables `HBNB_TYPE_STORAGE=db`.
+
+In `DBStorage` mode, every time the backend is initialized, HolbertonBnB
+instantiates an instance of `DBStorage` called `storage`. The `storage` object
+is loaded/re-loaded from the MySQL database specified in the environmental variable
+`HBNB_MYSQL_DB`, using the user `HBNB_MYSQL_USER`, password `HBNB_MYSQL_PWD`, and
+host `HBNB_MYSQL_HOST`. As class instances are created, updated, or deleted, the
+`storage` object is used to register changes in the corresponding MySQL database.
+Connection and querying is achieved using SQLAlchemy.
+
+Note that the databases specified for `DBStorage` to connect to must already be
+defined on the MySQL server. This repository includes scripts
+[setup_mysql_dev.sql](./setup_mysql_dev.sql) and [setup_mysql_test.sql](./setup_mysql_test.sql)
+to set up `hbnb_dev_db` and `hbnb_test_db` databases in a MySQL server,
+respectively.
+
+### Using the Console
+
+The HolbertonBnB console can be run both interactively and non-interactively.
+To run the console in non-interactive mode, pipe any command(s) into an execution
+of the file `console.py` at the command line.
+
+```
+$ echo "help" | ./console.py
+(hbnb)
+Documented commands (type help <topic>):
+========================================
+EOF  all  count  create  destroy  help  quit  show  update
+
+(hbnb)
+$
+```
+
+Alternatively, to use the HolbertonBnB console in interactive mode, run the
+file `console.py` by itself:
+
+```
+$ ./console.py
+```
+Remember, the console can be run with `storage` instantiated in either `FileStorage`
+or `DBStorage` mode. The above examples instantiate `FileStorage` by default, but
+`DBStorage` can be instantiated like so:
+
+```
+$ HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py
+```
+
+The console functions identically regardless of the `storage` mode.
+
+While running in interactive mode, the console displays a prompt for input:
+
+```
+$ ./console.py
+(hbnb)
+```
+
+To quit the console, enter the command `quit`, or input an EOF signal
+(`ctrl-D`).
+
+```
+$ ./console.py
+(hbnb) quit
+$
+```
+
+```
+$ ./console.py
+(hbnb) EOF
+$
+```
+
 
 <center><h3>Repository Contents by Project Task</h3> </center>
 
