@@ -34,8 +34,8 @@ def proute(text="is cool"):
 @app.route('/number/<int:n>', strict_slashes=False)
 def number(n):
     """Displays the number which is an integer"""
-    if isinstance(n, int):
-        return f"{n} is a number"
+    #if isinstance(n, int):
+    return f"{n} is a number"
 
 
 if __name__ == '__main__':
